@@ -1,14 +1,23 @@
 // var dragItem= document.getElementById("dragElement");
  var dropLoc= document.getElementById("dropLocation");
+ 
+ 
+ 
+
+// Add image
+ function addImage(){
+  
+var imageDiv=document.createElement("div");
+imageDiv.setAttribute("class","image");
+imageDiv.style="height:100px; width:20%; resize:both";
+var image=document.createElement("img");
 
 
-// //Add image
-// function addImage(){
+dropLoc.appendChild(imageDiv);
+imageDiv.appendChild(image);
 
 
-
-
-// }
+// // }
 
 
 // dragItem.ondragstart = function(evt){
@@ -39,7 +48,7 @@
 //     myNewElement.src=myElement.src;
 //     dropLoc.appendChild(myNewElement);
 
-// }
+}
 
 
 // Adding Text
@@ -51,6 +60,10 @@ function addText(){
 var resizable =document.createElement("div");
 resizable.setAttribute("class",'resizable');
 
+
+var resizers= document.createElement("div");
+resizers.setAttribute("class",'resizers');
+
 var divheader= document.createElement("div");
 divheader.setAttribute("class", 'divheader');
 
@@ -58,8 +71,6 @@ var divtypeArea= document.createElement("div");
 divtypeArea.setAttribute("class",'divtypeArea');
 divtypeArea.setAttribute("contentEditable", 'true');
 
-var resizers= document.createElement("div");
-resizers.setAttribute("class",'resizers');
 
 
 // var resizer= document.createElement("div");
@@ -95,6 +106,7 @@ CKEDITOR.inline(divtypeArea);
 dropLoc.appendChild(resizable);
 
 
+
 resizable.appendChild(resizers);
 resizers.appendChild(divheader);
 resizers.appendChild(divtypeArea);
@@ -108,14 +120,17 @@ makeResizableDiv();
 
 // Resizing
 function makeResizableDiv() {
+  
   const elements = document.getElementsByClassName("resizable");
   
-  for(let i =0;i<elements.size; i++)
+  for(let i =0;i<elements.length; i++)
     {
       
       let element = elements[i];
       
-       const resizers = document.querySelectorAll(div + ' .resizer')
+      //  const resizers = element.querySelectorAll('resizers')
+      const resizers = element.getElementsByClassName("resizer");
+      
   const minimum_size = 20;
   let original_width = 0;
   let original_height = 0;
@@ -125,6 +140,7 @@ function makeResizableDiv() {
   let original_mouse_y = 0;
   for (let i = 0;i < resizers.length; i++) {
     const currentResizer = resizers[i];
+    
     currentResizer.addEventListener('mousedown', function(e) {
       e.preventDefault()
       original_width = parseFloat(getComputedStyle(element, null).getPropertyValue('width').replace('px', ''));
@@ -198,7 +214,7 @@ function makeResizableDiv() {
 // Dragging the element
 
 function dragElement(elmnt) {
-  alert("inside dragelement");
+  
   let elems = document.getElementsByClassName("divheader");
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
 
