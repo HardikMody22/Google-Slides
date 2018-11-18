@@ -5,57 +5,69 @@
  
 
 // Add image
- function addImage(){
-  
-var imageDiv=document.createElement("div");
-imageDiv.setAttribute("class","image");
-imageDiv.style="height:100px; width:20%; resize:both";
-var image=document.createElement("img");
+function showImage() {
+  if(this.files && this.files[0]) {
+      let obj= new FileReader();
+      obj.onload = function(data) {
+      let image = document.getElementById("image");
+      image.setAttribute('class','imageclass');
+     var resizable =document.createElement("div");
+    resizable.setAttribute("class",'resizable');
 
 
-dropLoc.appendChild(imageDiv);
-imageDiv.appendChild(image);
+var resizers= document.createElement("div");
+resizers.setAttribute("class",'resizers');
+
+var divheader= document.createElement("div");
+divheader.setAttribute("class", 'divheader');
+
+var divtypeArea= document.createElement("div");
+divtypeArea.setAttribute("class",'divtypeArea');
+
+var top_left= document.createElement("div");
+top_left.setAttribute("class",'resizer top-left');
+
+var top_right= document.createElement("div");
+top_right.setAttribute("class",'resizer top-right');
+
+var bottom_left= document.createElement("div");
+bottom_left.setAttribute("class",'resizer bottom-left');
+
+var bottom_right= document.createElement("div");
+bottom_right.setAttribute("class", 'resizer bottom-right');
 
 
-// // }
 
 
-// dragItem.ondragstart = function(evt){
-
-// evt.dataTransfer.setData('key', evt.target.id);
-// console.log("its dragging...");
-
-// }
+dropLoc.appendChild(resizable);
 
 
 
-// dropLoc.ondragover = function(evt){
-// evt.preventDefault();
-// console.log("its dragover....");
+resizable.appendChild(resizers);
+resizers.appendChild(divheader);
+resizers.appendChild(divtypeArea);
 
+resizers.appendChild(top_left);
+resizers.appendChild(top_right);
+resizers.appendChild(bottom_left);
+resizers.appendChild(bottom_right);
+divtypeArea.appendChild(image);
+      makeResizableDiv();
+      dragElement();
+      
+      image.src = data.target.result;
+      image.style.display = "block";
 
-// }
-
-// dropLoc.ondrop = function(evt){
-
-//     var dropItem = evt.dataTransfer.getData('key');
-//     evt.preventDefault();
-//     console.log("its dropped..");
-//     console.log(dropItem);
-//     var myElement = document.getElementById(dropItem);
-//     console.log(myElement);
-//     var myNewElement= document.createElement('img');
-//     myNewElement.src=myElement.src;
-//     dropLoc.appendChild(myNewElement);
-
+      }
+    obj.readAsDataURL(this.files[0]);
+  }
 }
+
 
 
 // Adding Text
 function addText(){
-// var div =document.createElement("div");
-// div.setAttribute("class",'div');
-// div.setAttribute("",'resizable');
+
 
 var resizable =document.createElement("div");
 resizable.setAttribute("class",'resizable');
@@ -73,8 +85,6 @@ divtypeArea.setAttribute("contentEditable", 'true');
 
 
 
-// var resizer= document.createElement("div");
-// resizer.setAttribute("class",'resizer');
 
 
 var top_left= document.createElement("div");
@@ -91,16 +101,6 @@ bottom_right.setAttribute("class", 'resizer bottom-right');
 
 
 CKEDITOR.inline(divtypeArea);
-// div.style="border:1px solid black; width: 100px; height: 100px; position:absolute";
-// divheader.style="border:5px solid black ;cursor: move; z-index: 10; background-color: #2196F3; color: #fff";
-// divtypeArea.style="border:1px solid black";
-// divtypeArea.setAttribute('contentEditable',"true");
-// resizers.style="width: 100%; height: 100%; border: 3px solid #4286f4; box-sizing: border-box"
-// top_left.style=" width: 5px; height: 5px; border-radius: 50%; background: white; border: 3px solid #4286f4; position: absolute ; left: -5px; top: -5px; cursor: nwse-resize"
-// top_right.style=" width: 5px; height: 5px; border-radius: 50%; background: white; border: 3px solid #4286f4; position: absolute ; right: -5px; top: -5px; cursor: nwse-resize"
-// bottom_left.style=" width: 5px; height: 5px; border-radius: 50%; background: white; border: 3px solid #4286f4; position: absolute ; left: -5px; bottom: -5px; cursor: nwse-resize"
-// bottom_right.style=" width: 5px; height: 5px; border-radius: 50%; background: white; border: 3px solid #4286f4; position: absolute ; right: -5px; bottom: -5px; cursor: nwse-resize"
-
 
 
 dropLoc.appendChild(resizable);
