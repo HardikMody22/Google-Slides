@@ -1,0 +1,22 @@
+{
+  "name": "extra-credit-assignment-ppt-hardikmody22",
+  "version": "1.0.0",
+  "description": "Google Slides",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neu-mis-info6150-fall-2018/extra-credit-assignment-ppt-HardikMody22.git"
+  },
+  "author": "Hardik Mody",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neu-mis-info6150-fall-2018/extra-credit-assignment-ppt-HardikMody22/issues"
+  },
+  "homepage": "https://github.com/neu-mis-info6150-fall-2018/extra-credit-assignment-ppt-HardikMody22#readme",
+  "devDependencies": {
+    "webpack": "^4.26.0"
+  }
+}
